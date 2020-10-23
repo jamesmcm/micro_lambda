@@ -1,0 +1,21 @@
+[package]
+name = "micro_lambda"
+description = "Small tutorial example of an AWS Lambda custom runtime"
+version = "0.1.0"
+authors = ["James McMurray <jamesmcm03@gmail.com>"]
+edition = "2018"
+license = "MIT/Apache-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "bootstrap"
+path = "src/bin.rs"
+
+[dependencies]
+ureq = {version = "1.5.1", default_features = false}
+
+[profile.release]
+panic = 'abort'
+codegen-units = 1
+opt-level = 'z'
+lto = true
